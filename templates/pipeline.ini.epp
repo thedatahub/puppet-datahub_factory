@@ -1,0 +1,33 @@
+<%- |
+    String $importer_plugin,
+    String $fixer_plugin = 'Fix',
+    String $exporter_plugin,
+    String $fixer_id_path,
+    Hash $importer_options,
+    Hash $fixer_options,
+    Hash $exporter_options
+| -%>
+[Importer]
+plugin = '<%= $importer_plugin %>'
+
+[Fixer]
+plugin = '<%= $fixer_plugin %>'
+id_path = '<%= $fixer_id_path %>'
+
+[Exporter]
+plugin = '<%= $exporter_plugin %>'
+
+[plugin_importer_<%= $importer_plugin -%>]
+<% $importer_options.each | $key, $value | { -%>
+<%= $key %> = '<%= $value %>'
+<% } -%>
+
+[plugin_fixer_<%= $fixer_plugin -%>]
+<% $fixer_options.each | $key, $value | { -%>
+<%= $key %> = '<%= $value %>'
+<% } -%>
+
+[plugin_exporter_<%= $exporter_plugin -%>]
+<% $exporter_options.each | $key, $value | { -%>
+<%= $key %> = '<%= $value %>'
+<% } -%>
