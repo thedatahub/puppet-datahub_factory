@@ -1,2 +1,3 @@
 tests/init.sh
 tests/test.sh
+pkg/
